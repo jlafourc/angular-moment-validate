@@ -1,0 +1,30 @@
+{
+  "name": "angular-moment-validate",
+  "version": "0.1.0",
+  "homepage": "https://github.com/jlafourc/angular-moment-validate",
+  "authors": [
+    "Julien Lafourcade <julien.lafourcade@gmail.com>"
+  ],
+  "description": "Angular directive to validate content of html text input against formats with moment.js",
+  "main": "moment-validate.js",
+  "keywords": [
+    "angular",
+    "momentjs",
+    "validation",
+    "moment",
+    "date",
+    "validate"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "moment" : "~2.0.0",
+    "lodash" : "~0.8.2"
+  }
+}
