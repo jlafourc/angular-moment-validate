@@ -1,11 +1,11 @@
 (function () {
     angular.module('moment.validate')
         .constant('moment', moment)
-        .constant('_', _)
+        .constant('lodash', _)
         .directive('momentValidate', momentValidate);
         
-    momentValidate.$inject = ['moment', '_'];
-    function momentValidate(moment, _) {
+    momentValidate.$inject = ['moment', 'lodash'];
+    function momentValidate(moment, lodash) {
         return {
             restrict: 'A',
             require: '?ngModel',
@@ -16,12 +16,12 @@
                     defaultModelFormat = 'YYYY-MM-DD',
                     defaultType = 'moment';
 
-                var viewFormat = attr.momentValidateViewFormat || defaultViewFormat,
-                    modelFormat = attr.momentValidateModelFormat || defaultModelFormat,
-                    type = attr.momentValidate || defaultType;
+                var viewFormat = attr['momentValidateViewFormat'] || defaultViewFormat,
+                    modelFormat = attr['momentValidateModelFormat'] || defaultModelFormat,
+                    type = attr['momentValidate'] || defaultType;
 
                 ngModel.$formatters.push(function(value) {
-                    if (!_.isUndefined(value)) {
+                    if (!lodash.isUndefined(value)) {
                         if (type == 'moment' && moment.isMoment(value)) {
                             return value.format(viewFormat);
                         } else if (type == 'string') {
@@ -49,7 +49,7 @@
                 });
 
                 ngModel.$validators.moment = function(value) {
-                    if (!_.isUndefined(value)) {
+                    if (!lodash.isUndefined(value)) {
                         if (type == 'moment' && moment.isMoment(value)) {
                             return value.isValid();
                         } else if (type == 'string') {
@@ -59,7 +59,5 @@
                 };
             }
         };
-    };
-
-
+    }
 })();
