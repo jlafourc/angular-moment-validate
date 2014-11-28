@@ -1,5 +1,5 @@
 (function () {
-    angular.module('moment.validate')
+    angular.module('moment.validate', [])
         .constant('moment', moment)
         .constant('lodash', _)
         .directive('momentValidate', momentValidate);
